@@ -1,0 +1,21 @@
+2021-02-09 09:54:00,464 WARN  [SoapUI] Missing folder [C:\Users\formation\Documents\SquashTA-1.10.0-RELEASE-workspace\soapui_Projet2\ext] for external libraries
+2021-02-09 09:54:00,696 INFO  [DefaultSoapUICore] initialized soapui-settings from [C:\Users\formation\soapui-settings.xml]
+2021-02-09 09:54:01,808 INFO  [PluginManager] 0 plugins loaded in 3 ms
+2021-02-09 09:54:01,809 INFO  [DefaultSoapUICore] All plugins loaded
+2021-02-09 09:54:02,717 INFO  [WsdlProject] Loaded project from [file:/C:/Users/formation/Documents/SquashTA-1.10.0-RELEASE-workspace/soapui_Projet2/src/test/resources/NOAA2-soapui-project.xml]
+2021-02-09 09:54:02,754 INFO  [MethodeAvanceeSuiteDeuxTest] 
+Nom du cas de test SoapUI : LatLonListCityName
+2021-02-09 09:54:02,778 INFO  [WsdlProject] Loaded project from [file:/C:/Users/formation/Documents/SquashTA-1.10.0-RELEASE-workspace/soapui_Projet2/src/test/resources/NOAA2-soapui-project.xml]
+2021-02-09 09:54:03,954 WARN  [AbstractSoapVersion] Ignoring validation error: error: cvc-complex-type.3.2.2: Attribute not allowed: encodingStyle@http://schemas.xmlsoap.org/soap/envelope/ in element Envelope@http://schemas.xmlsoap.org/soap/envelope/
+2021-02-09 09:54:03,958 INFO  [MethodeAvanceeSuiteDeuxTest] cas de test soapUI terminé ('com.eviware.soapui.impl.wsdl.WsdlTestSuite@30cdae70':'LatLonListCityName') : FINISHED
+2021-02-09 09:54:03,959 INFO  [MethodeAvanceeSuiteDeuxTest] 
+Nom du cas de test SoapUI : LatLonListLine
+2021-02-09 09:54:03,968 INFO  [WsdlProject] Loaded project from [file:/C:/Users/formation/Documents/SquashTA-1.10.0-RELEASE-workspace/soapui_Projet2/src/test/resources/NOAA2-soapui-project.xml]
+2021-02-09 09:54:04,763 WARN  [AbstractSoapVersion] Ignoring validation error: error: cvc-complex-type.3.2.2: Attribute not allowed: encodingStyle@http://schemas.xmlsoap.org/soap/envelope/ in element Envelope@http://schemas.xmlsoap.org/soap/envelope/
+2021-02-09 09:54:05,525 WARN  [AbstractSoapVersion] Ignoring validation error: error: cvc-complex-type.3.2.2: Attribute not allowed: encodingStyle@http://schemas.xmlsoap.org/soap/envelope/ in element Envelope@http://schemas.xmlsoap.org/soap/envelope/
+2021-02-09 09:54:05,525 INFO  [MethodeAvanceeSuiteDeuxTest] cas de test soapUI terminé ('com.eviware.soapui.impl.wsdl.WsdlTestSuite@697446d4':'LatLonListLine') : FINISHED
+2021-02-09 09:54:05,525 INFO  [MethodeAvanceeSuiteDeuxTest] 
+Nom du cas de test SoapUI : LatLonListSquare
+2021-02-09 09:54:05,532 INFO  [WsdlProject] Loaded project from [file:/C:/Users/formation/Documents/SquashTA-1.10.0-RELEASE-workspace/soapui_Projet2/src/test/resources/NOAA2-soapui-project.xml]
+2021-02-09 09:54:06,290 WARN  [AbstractSoapVersion] Ignoring validation error: error: cvc-complex-type.3.2.2: Attribute not allowed: encodingStyle@http://schemas.xmlsoap.org/soap/envelope/ in element Envelope@http://schemas.xmlsoap.org/soap/envelope/
+2021-02-09 09:54:06,290 INFO  [MethodeAvanceeSuiteDeuxTest] cas de test soapUI terminé ('com.eviware.soapui.impl.wsdl.WsdlTestSuite@6e78fcf5':'LatLonListSquare') : FINISHED
