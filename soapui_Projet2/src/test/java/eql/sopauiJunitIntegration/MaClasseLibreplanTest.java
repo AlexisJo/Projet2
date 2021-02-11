@@ -1,6 +1,6 @@
-/*package eql.sopauiJunitIntegration;
+package eql.sopauiJunitIntegration;
 
-import static org.junit.Assert.assertTrue;
+
 import static org.junit.Assert.*;
 
 import java.io.IOException;
@@ -20,21 +20,20 @@ import com.eviware.soapui.impl.wsdl.testcase.WsdlTestCase;
 import com.eviware.soapui.impl.wsdl.testcase.WsdlTestCaseRunner;
 import com.eviware.soapui.model.support.PropertiesMap;
 import com.eviware.soapui.model.testsuite.TestCase;
-import com.eviware.soapui.model.testsuite.TestCaseRunner;
 import com.eviware.soapui.model.testsuite.TestRunner;
 import com.eviware.soapui.model.testsuite.TestStepResult;
 import com.eviware.soapui.support.SoapUIException;
 
 @RunWith(Parameterized.class)
-public class MethodeAvanceeSuiteDeuxTest {
-	
-	//static Logger logger = LoggerFactory.getLogger(MethodeAvanceeSuiteDeuxTest.class);
-    private String testCaseName;
-    private static String soapuiProjectName = "src\\test\\resources\\LibrePlan.xml";
+public class MaClasseLibreplanTest {
 
-    public MethodeAvanceeSuiteDeuxTest(String testCaseName) {
+    private String testCaseName;
+    private static String soapuiProjectName = "src\\test\\resources\\Project-2-LibrePlan-soapui-project.xml";
+
+    public MaClasseLibreplanTest(String testCaseName) {
         this.testCaseName = testCaseName;
     }   
+    
 
     @Parameters(name="{0}")
     public static Collection<String[] > getTestCases() throws XmlException, IOException, SoapUIException {
@@ -53,11 +52,7 @@ public class MethodeAvanceeSuiteDeuxTest {
 
     @Test
     public void testSoapUITestCase() throws XmlException, IOException, SoapUIException {
-    	
-    	System.setProperty("log4j.configurationFile","src\\test\\resources\\log4j2.properties");
-    	
-    	System.out.println("\nNom du cas de test SoapUI : " + testCaseName);
-        
+        System.out.println("Nom du cas de test SoapUI : " + testCaseName);
         assertTrue(true);
         assertTrue(runSoapUITestCase(this.testCaseName));
     }
@@ -75,17 +70,16 @@ public class MethodeAvanceeSuiteDeuxTest {
             System.err.println("runner soapUI, le cas de test est null : " + testCase);
             return false;
         }
-        TestCaseRunner runnero = soapuiTestCase.run(new PropertiesMap(), false);
-        for (TestStepResult tsr:runnero.getResults()) {
-        	System.out.println("tsr name " + tsr.getTestStep().getName());
-        	System.out.println("error " + tsr.getError());
-        	System.out.println("msg" + tsr.getMessages());
-        	System.out.println("status" + tsr.getStatus());
-        }
         soapuiTestCase.setDiscardOkResults(true);
         WsdlTestCaseRunner runner = soapuiTestCase.run(new PropertiesMap(), false);
         exitValue = runner.getStatus();
-
+        for (TestStepResult tsr:runner.getResults()) {
+ 			System.out.println("tsr name" + tsr.getTestStep().getName());
+ 			System.out.println("error" + tsr.getError());
+ 			System.out.println("msg" + tsr.getMessages());
+ 			System.out.println("statut" + tsr.getStatus());	
+ 		}
+        
         System.out.println("cas de test soapUI terminé ('" + testSuite + "':'" + testCase + "') : " + exitValue);
         if (exitValue == TestRunner.Status.FINISHED) {
             return true;
@@ -93,4 +87,4 @@ public class MethodeAvanceeSuiteDeuxTest {
             return false;
         }
     }
-}*/
+}

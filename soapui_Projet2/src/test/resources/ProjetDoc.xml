@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite id="20af1447-be4b-419c-bfe2-5afbe4d90ee2" name="ProjetDoc" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="339a6a49-c11d-47e0-980f-c268f96827e5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetSID" searchProperties="true"><con:settings/><con:testStep type="request" id="d70ae5ec-8e29-4d39-a42a-60cb755f32a3" name="login - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SoapAuthServiceServiceSoapBinding</con:interface><con:operation>login</con:operation><con:request name="login - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="38456dbb-4b31-4f41-a56e-777aa2300596"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/logicaldoc/services/Auth</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.logicaldoc.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ws:login>\r
+         <!--Optional:-->\r
+         <username>admin</username>\r
+         <!--Optional:-->\r
+         <password>admin</password>\r
+      </ws:login>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="b51b9904-aeb6-427c-b46f-f361f111bf13" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="903ccba3-f6ea-4ad5-83d2-140a8788ae38" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://endpoint.soap.webservice.logicaldoc.com/Auth/login"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="879fef6c-60fb-40d9-abea-bde7bb7c5823"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>sid</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>login - Request 1</con:sourceStep><con:sourcePath>declare namespace ns2='http://ws.logicaldoc.com';
+//ns2:loginResponse[1]/return[1]</con:sourcePath><con:targetType>Sid</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="b8837b24-604b-4981-9bff-04a9eb0b659f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CreateFolder" searchProperties="true"><con:settings/><con:testStep type="request" id="bd9b8f64-0e60-4435-82f6-b1a72f9fd2de" name="create"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SoapFolderServiceServiceSoapBinding</con:interface><con:operation>create</con:operation><con:request name="create" id="7e0e8cda-9198-4ff6-ad0c-f627b10e3982"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/logicaldoc/services/Folder</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.logicaldoc.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ws:create>\r
+         <!--Optional:-->
+         <sid>${#TestSuite#Sid}</sid>
+         <!--Optional:-->
+
+         <folder>\r
+            <!--Zero or more repetitions:-->\r
+            <attributes>\r
+               <hidden>0</hidden>\r
+               <!--Optional:-->\r
+               <name>Nom</name>\r
+               <position>0</position>\r
+               <type>0</type>\r
+            </attributes>\r
+            <!--Optional:-->\r
+            <creation>string</creation>\r
+            <!--Optional:-->\r
+            <creator>test</creator>\r
+            <!--Optional:-->\r
+            <description>deusio</description>\r
+            <!--Optional:-->\r
+            <id>0</id>\r
+            <!--Optional:-->\r
+            <lastModified>today</lastModified>\r
+            <!--Optional:-->\r
+            <name>string</name>\r
+            <parentId>4</parentId>\r
+            <position>0</position>\r
+            <!--Optional:-->\r
+            <securityRef>0</securityRef>\r
+            <!--Optional:-->\r
+            <storage>1</storage>\r
+            <!--Zero or more repetitions:-->\r
+            <tags>tag</tags>\r
+            <!--Optional:-->\r
+            <templateId>0</templateId>\r
+            <templateLocked>0</templateLocked>\r
+            <type>0</type>\r
+         </folder>\r
+      </ws:create>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="191d0c71-4d5d-461b-831a-d63a0c2114b1" name="SOAP Response"/><con:assertion type="Invalid HTTP Status Codes" id="ed00fdbb-d40d-4006-b5be-6f01c38c72c6" name="Invalid HTTP Status Codes"><con:configuration><codes>500</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="b676febd-2f5e-432d-a2fb-5b1248442d22" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" id="ba64b986-eba9-4061-8c34-bc7703926a96" name="XPath Match"><con:configuration><path>declare namespace ns2='http://ws.logicaldoc.com';
+//ns2:createResponse[1]/folder[1]/description[1]</path><content>deusio</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:username>admin</con:username><con:password>admin</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:preemptive>true</con:preemptive><con:authType>Preemptive</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://endpoint.soap.webservice.logicaldoc.com/Folder/create" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="13e6ac57-a9df-4795-9bc5-0ff3101f4d0b"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>FolderID</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>create</con:sourceStep><con:sourcePath>declare namespace ns2='http://ws.logicaldoc.com';
+//ns2:createResponse[1]/folder[1]/id[1]</con:sourcePath><con:targetType>FoldID</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:targetPath/><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="69a064a5-e455-4879-9537-6da07878a6c9" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CreateDoc" searchProperties="true"><con:settings/><con:testStep type="request" id="c7d7e91c-3dab-4af9-b81c-658fa013a8cf" name="create - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SoapDocumentServiceServiceSoapBinding</con:interface><con:operation>create</con:operation><con:request name="create - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="691fd4b4-c841-4f2a-b76e-d0a9b69aaefa"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/logicaldoc/services/Document</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.logicaldoc.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:create>
+         <!--Optional:-->
+         <sid>${#TestSuite#Sid}</sid>
+         <!--Optional:-->
+         <document>
+            <!--Zero or more repetitions:-->
+            <attributes>
+               <editor>0</editor>
+               <mandatory>0</mandatory>
+               <name>Obligatoire</name>
+               <type>0</type>
+            </attributes>
+            <!--Optional:-->
+            <date>2002-12-20</date>
+            <fileName>test</fileName>
+            <fileSize>1</fileSize>
+            <folderId>${#TestSuite#FoldID}</folderId>
+            <id>12112</id>
+            <type>doc</type>
+         </document>
+         <!--Optional:-->
+         <content>cid:1485784101047</content>
+      </ws:create>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="65bec4dd-0e95-4462-8588-1f30eaefa2e2" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="15ad47ad-b48f-4684-a135-13e2a02445c4" name="Not SOAP Fault"/><con:assertion type="XPath Match" id="bf76e7f5-9dd4-429c-91b8-b8eee575d55d" name="XPath Match"><con:configuration><path>declare namespace ns2='http://ws.logicaldoc.com';
+//ns2:createResponse[1]/document[1]/creator[1]</path><content>Admin Admin</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:username>admin</con:username><con:password>admin</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:preemptive>true</con:preemptive><con:authType>Preemptive</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://endpoint.soap.webservice.logicaldoc.com/Document/create"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="d8d041ed-ebe1-451b-83c0-10ca2ac300d9"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>documentId</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>create - Request 1</con:sourceStep><con:sourcePath>declare namespace ns2='http://ws.logicaldoc.com';
+//ns2:createResponse[1]/document[1]/id[1]</con:sourcePath><con:targetType>DocID</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>customid</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>create - Request 1</con:sourceStep><con:sourcePath>declare namespace ns2='http://ws.logicaldoc.com';
+//ns2:createResponse[1]/document[1]/customId[1]</con:sourcePath><con:targetType>customID</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ae1e5f7e-3c2a-4577-9569-149337c53781" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="UpdateDoc" searchProperties="true"><con:settings/><con:testStep type="request" id="ee905357-c0c7-41d4-94d6-31b01a8809ce" name="update - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SoapDocumentServiceServiceSoapBinding</con:interface><con:operation>update</con:operation><con:request name="update - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="3f1f03d7-3543-4184-92d5-e96946b9776c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/logicaldoc/services/Document</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.logicaldoc.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ws:update>\r
+         <!--Optional:-->\r
+         <sid>${#TestSuite#Sid}</sid>\r
+         <!--Optional:-->\r
+         <document>\r
+            <!--Zero or more repetitions:-->\r
+            <attributes>\r
+               <editor>0</editor>\r
+               <hidden>0</hidden>\r
+               <mandatory>0</mandatory>\r
+               <multiple>0</multiple>\r
+               <position>0</position>\r
+               <type>0</type>\r
+            </attributes>\r
+            <creation>2002-12-20 00:00:00 +0100</creation>
+            <creator>Admin Admin</creator>
+            <creatorId>1</creatorId>
+            <customId>${#TestSuite#customID}</customId>
+            <date>2002-12-20 00:00:00 +0100</date>
+            <exportStatus>0</exportStatus>
+            <fileName>testron</fileName>
+            <fileSize>12</fileSize>
+            <fileVersion>1.0</fileVersion>
+            <folderId>${#TestSuite#FoldID}</folderId>
+            <id>${#TestSuite#DocID}</id>
+            <immutable>0</immutable>
+            <indexed>1</indexed>
+            <lastModified>2021-02-10 17:25:40 +0100</lastModified>
+            <nature>0</nature>
+            <pages>-1</pages>
+            <passwordProtected>0</passwordProtected>
+            <published>1</published>
+            <publisher>Admin Admin</publisher>
+            <publisherId>1</publisherId>
+            <signed>0</signed>
+            <stamped>0</stamped>
+            <startPublishing>2021-02-10 00:00:00 +0100</startPublishing>
+            <status>0</status>
+            <type>unknown</type>
+            <version>1.0</version>
+         </document>\r
+      </ws:update>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="138c298d-c917-414d-962c-0bb5aeca6181" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="5355d2be-c667-438e-9c70-b631b7294aa7" name="Not SOAP Fault"/><con:assertion type="Simple NotContains" id="cfb8cd82-317d-4862-b138-8dad63e4e1fa" name="Not Contains"><con:configuration><token>error</token><ignoreCase>true</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple NotContains" id="8fc8bd54-bdcc-45f1-ae7e-f9a04fb6e2d4" name="Not Contains 1"><con:configuration><token>fault</token><ignoreCase>true</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="fd42ec39-5e1d-4636-b77e-4f4263de4c9a" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://endpoint.soap.webservice.logicaldoc.com/Document/update"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="6fb4e2f5-c549-4c4f-bcde-230961def15d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="BookmarkDoc" searchProperties="true"><con:settings/><con:testStep type="request" id="ad9c01b7-7be5-4b77-bd7e-ebf8e4274b25" name="bookmarkDocument - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SoapBookmarkServiceServiceSoapBinding</con:interface><con:operation>bookmarkDocument</con:operation><con:request name="bookmarkDocument - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="2683705b-b132-417e-8a89-4c85aa6f9e21"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/logicaldoc/services/Bookmark</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.logicaldoc.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ws:bookmarkDocument>\r
+         <!--Optional:-->\r
+         <sid>${#TestSuite#Sid}</sid>\r
+         <docId>${#TestSuite#DocID}</docId>\r
+      </ws:bookmarkDocument>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="4bee6c4c-8087-45cb-ac53-709c77495957" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="ab064061-421b-46b5-b7ed-74d7a10607eb" name="Not SOAP Fault"/><con:assertion type="XPath Match" id="0e17bdb8-6c0d-4845-9621-7b79df4e154c" name="XPath Match"><con:configuration><path>declare namespace ns2='http://ws.logicaldoc.com';
+//ns2:bookmarkDocumentResponse[1]/bookmark[1]/targetId[1]</path><content>${#TestSuite#DocID}</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://endpoint.soap.webservice.logicaldoc.com/Bookmark/bookmarkDocument"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="6c818b30-3cb1-4a1e-be42-f5df1feda4fe" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="unbookDoc" searchProperties="true"><con:settings/><con:testStep type="request" id="b7d8878b-80f5-41d2-b69c-a0157fe8fed5" name="unbookmarkDocument - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SoapBookmarkServiceServiceSoapBinding</con:interface><con:operation>unbookmarkDocument</con:operation><con:request name="unbookmarkDocument - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="d1483553-4a75-437a-b0ae-c9457840e6a2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/logicaldoc/services/Bookmark</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.logicaldoc.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ws:unbookmarkDocument>\r
+         <!--Optional:-->\r
+         <sid>${#TestSuite#Sid}</sid>\r
+         <docId>${#TestSuite#DocID}</docId>\r
+      </ws:unbookmarkDocument>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0731948f-e1e6-4834-9718-8a8c95557806" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="35eee83e-72fc-4830-93e4-7e229d42a251" name="Not SOAP Fault"/><con:assertion type="Simple NotContains" id="42e81852-4778-4b94-9659-43e5df907f1e" name="Not Contains"><con:configuration><token>error</token><ignoreCase>true</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple NotContains" id="bae35ca4-d91e-4a89-8ada-410c20f9d1ca" name="Not Contains 1"><con:configuration><token>fault</token><ignoreCase>true</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="0827c08a-8aae-4ac1-a767-fbb68c41f1c7" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://endpoint.soap.webservice.logicaldoc.com/Bookmark/unbookmarkDocument"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="6d789875-2f9a-4334-8a8a-605c422bfee3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="deleteDoc" searchProperties="true"><con:settings/><con:testStep type="request" id="04b65356-345c-4184-812d-7355dc526bfe" name="delete - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SoapDocumentServiceServiceSoapBinding</con:interface><con:operation>delete</con:operation><con:request name="delete - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="365e052e-b6d2-4641-b738-966b31928b0a"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/logicaldoc/services/Document</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.logicaldoc.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ws:delete>\r
+         <!--Optional:-->\r
+         <sid>${#TestSuite#Sid}</sid>\r
+         <docId>${#TestSuite#DocID}</docId>\r
+      </ws:delete>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="877f92ac-922e-49e8-b4b1-7bc91c40ae72" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="d5d022a3-48bb-492d-8a8a-c63bd68c3d55" name="Not SOAP Fault"/><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://endpoint.soap.webservice.logicaldoc.com/Document/delete"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="fe22b9c4-0989-435a-a39d-054788af01d5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="FindByName" searchProperties="true"><con:settings/><con:testStep type="request" id="eeb03787-788c-4320-810f-7a9ba2a5699d" name="findByFilename - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SoapSearchServiceServiceSoapBinding</con:interface><con:operation>findByFilename</con:operation><con:request name="findByFilename - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="295b04dc-a138-4c44-98cd-44e844269a88"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/logicaldoc/services/Search</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.logicaldoc.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ws:findByFilename>\r
+         <!--Optional:-->\r
+         <sid>${#TestSuite#Sid}</sid>\r
+         <!--Optional:-->\r
+         <filename>${#TestSuite#Nom}</filename>\r
+      </ws:findByFilename>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="976c3ed5-f16a-4c1a-8218-27e14dc3e44b" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="1787a8e8-f6e8-4455-af97-a65246e8e044" name="Not SOAP Fault"/><con:assertion type="XPath Match" id="3ff643dc-c36d-4962-81bb-149087bcd86f" name="XPath Match"><con:configuration><path>declare namespace ns2='http://ws.logicaldoc.com';
+//ns2:findByFilenameResponse[1]/document[1]/fileName[1]</path><content>${#TestSuite#Nom}</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://endpoint.soap.webservice.logicaldoc.com/Search/findByFilename"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="8c961bc2-eece-47bd-805d-a2d4cfada602" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="findByDate" searchProperties="true"><con:settings/><con:testStep type="request" id="8c5a5dac-7079-469e-a1a5-dd10f98a76d9" name="find - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SoapSearchServiceServiceSoapBinding</con:interface><con:operation>find</con:operation><con:request name="find - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="18d52bc7-a853-4e5c-b99a-1263a7b4f7db"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/logicaldoc/services/Search</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.logicaldoc.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ws:find>\r
+         <!--Optional:-->\r
+         <sid>${#TestSuite#Sid}</sid>\r
+         <!--Optional:-->\r
+         <options>\r
+            <creationFrom>2002-12-11</creationFrom>
+            <!--Optional:-->
+            <creationTo>2002-12-25</creationTo>
+            <expression>${#TestSuite#Nom}</expression>
+         </options>\r
+      </ws:find>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="aef4bfad-5a27-4b3e-bd03-3c86aeb7d62f" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="46f7dc4e-3b1e-44ca-bd39-93948b99a29f" name="Not SOAP Fault"/><con:assertion type="XPath Match" id="9e5c3177-41b6-4382-9afe-230ea9c36303" name="XPath Match"><con:configuration><path>declare namespace ns2='http://ws.logicaldoc.com';
+//ns2:findResponse[1]/searchResult[1]/hits[1]/fileName[1]</path><content>${#TestSuite#Nom}</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://endpoint.soap.webservice.logicaldoc.com/Search/find"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>Sid</con:name><con:value>3322f0e5-a5df-40e7-90e8-63b9b3a84f49</con:value></con:property><con:property><con:name>FoldID</con:name><con:value>111</con:value></con:property><con:property><con:name>DocID</con:name><con:value>110</con:value></con:property><con:property><con:name>customID</con:name><con:value>1e02bd62-f330-49a7-8983-ff683c69bed8</con:value></con:property><con:property><con:name>Nom</con:name><con:value>test</con:value></con:property></con:properties></con:testSuite>

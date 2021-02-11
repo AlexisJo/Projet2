@@ -18,10 +18,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
+        <attributes>
+            <attribute name="maven.pomderived" value="true"/>
+            <attribute name="org.eclipse.jst.component.nondependency" value=""/>
+        </attributes>
+</classpathentry> 
 	<classpathentry kind="lib" path="C:/Installation/SmartBear/SoapUI-5.4.0/lib/activation-1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Installation/SmartBear/SoapUI-5.4.0/lib/analytics-core-5.4.0.jar"/>
 	<classpathentry kind="lib" path="C:/Installation/SmartBear/SoapUI-5.4.0/lib/animal-sniffer-annotations-1.11.jar"/>
